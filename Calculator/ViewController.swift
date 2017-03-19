@@ -19,16 +19,19 @@ class ViewController: UIViewController {
         
         if userIsInTheMiddleOfTyping {
             let textCurrentlyInDisplay = display.text!
-            display.text = textCurrentlyInDisplay + digit
+            if !(textCurrentlyInDisplay.contains(".") && digit.contains(".")){
+                display.text = textCurrentlyInDisplay + digit
+            }
         } else {
-            display.text = digit
+            if digit.contains("."){
+                display.text = "0" + digit
+            } else {
+                display.text = digit
+            }
             userIsInTheMiddleOfTyping = true
+            
         }
     }
-    
-    
-    
-
     
     var displayValue: Double {
         get{
